@@ -84,7 +84,6 @@ class InitializedState:
         super().__init__(*args, **kwargs)
 
 
-
 class SanitizedNames:
     """
     ZipFile mix-in to ensure names are sanitized.
@@ -132,6 +131,7 @@ class SanitizedNames:
         ...
         ValueError: Empty filename
         """
+
         def allowed(part):
             return part and part not in {'..', '.'}
 
@@ -147,7 +147,6 @@ class SanitizedNames:
 
 
 class CompleteDirs(InitializedState, SanitizedNames, zipfile.ZipFile):
-
     """
     A ZipFile subclass that ensures that implied directories
     are always included in the namelist.
